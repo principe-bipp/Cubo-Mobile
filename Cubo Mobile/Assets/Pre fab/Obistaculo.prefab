@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1383399769166806876}
   - component: {fileID: 7629558686444842015}
   - component: {fileID: 5164241526933353592}
+  - component: {fileID: -1726641360198897802}
   m_Layer: 0
   m_Name: Obistaculo
   m_TagString: Obistaculo
@@ -140,3 +141,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1726641360198897802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234562973855990738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff32e1a53d44acf4cad769eee0bf6adf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Obistaculo
