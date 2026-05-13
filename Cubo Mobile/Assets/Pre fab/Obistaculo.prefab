@@ -153,3 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff32e1a53d44acf4cad769eee0bf6adf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obistaculo
+  destructionParticle: {fileID: 7247535311000355376, guid: 20c0c5aec07677f49a2f53d56f121dc8, type: 3}
