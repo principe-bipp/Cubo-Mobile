@@ -1,5 +1,7 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class GameMeneger : MonoBehaviour
 {
@@ -9,10 +11,31 @@ public class GameMeneger : MonoBehaviour
     public float spawnY = 11f;
     public float spawnX = 7f;
 
+    [SerializeField] private InputActionReference cancelAction;
+
+    private void OnEnable()
+    {
+        cancelAction.action.performed += OnCancel;
+    }
+
+    private void OnDisable()
+    {
+        cancelAction.action.performed -= OnCancel;
+
+        cancelAction.action.Disable();
+    }
+
+    private void OnCancel(InputAction.CallbackContext context)
+    {
+        Debug.Log("ESC apertado");
+    }
+
     private void Start()
     {
         StartCoroutine(SpawnObstacle());
     }
+
+    
 
     private IEnumerator SpawnObstacle()
     {
@@ -44,4 +67,28 @@ public class GameMeneger : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
         }
     }
+
+   private IEnumerator ScaleTime(float start, float end, float duration)
+    {
+        float lasTime = Time.realtimeSinceStartup;
+        float timer = 0.0f;
+
+        while (timer < duration)
+        {
+            //Interpolacão e Suavisação do tempo
+            Time.timeScale = Mathf.Lerp(start, end, timer / duration);
+
+            //Ajustar e Manter a conciencia do tempo de fisica
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+
+            timer += Time.realtimeSinceStartup - lasTime;
+            lasTime = Time.realtimeSinceStartup;
+
+            yield return null;
+        }
+        Time.timeScale = end;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+    }
+
+
 }
